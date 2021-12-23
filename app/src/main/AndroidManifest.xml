@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Game">
         <activity
+            android:name=".MainActivity6"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity5"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".MainActivity4"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity3"
             android:exported="false"

@@ -3,6 +3,7 @@ package com.example.game;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -12,6 +13,9 @@ import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
+import java.util.stream.IntStream;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -24,8 +28,9 @@ public class MainActivity2 extends AppCompatActivity {
 
     StringBuilder sb;
     Button Colour1, Colour2, Colour3, Colour4, Play;
-    TextView tv;
 
+
+    int[] colorArray = new int[4];
     int sequenceCount = 4, n = 0;
     int[] gameSequence = new int[120];
     int arrayIndex = 0;
@@ -42,19 +47,15 @@ public class MainActivity2 extends AppCompatActivity {
            // mTextField.setText("done!");
             // we now have the game sequence
 
-            tv.setText(sb);
             for (int i = 0; i< arrayIndex; i++)
                 Log.d("game sequence", String.valueOf(gameSequence[i]));
             // start next activity
 
             // put the sequence into the next activity
-            // stack overglow https://stackoverflow.com/questions/3848148/sending-arrays-with-intent-putextra
             Intent i = new Intent(MainActivity2.this, MainActivity3.class);
-            i.putExtra("numbers", arrayIndex);
+            i.putExtra("numbers", gameSequence);
+            i.putExtra("colorArray", colorArray);
             startActivity(i);
-
-             //start the next activity
-            int[] arrayB = i.getIntArrayExtra("numbers");
         }
     };
     @Override
@@ -68,7 +69,32 @@ public class MainActivity2 extends AppCompatActivity {
         Colour3 = findViewById(R.id.Colour3);
         Colour4 = findViewById(R.id.Colour4);
         Play = findViewById(R.id.Play);
-        //tv = findViewById(R.id.tvResult);
+
+        for (int i = 0; i < 4; i++) {
+            Random r = new Random();
+            int red = r.nextInt(256);
+            int green = r.nextInt(256);
+            int blue = r.nextInt(256);
+            int color = Color.rgb(red, green, blue);
+            final int finalColor = color;
+            boolean contains = IntStream.of(colorArray).anyMatch(x -> x == finalColor);
+            if (contains) {
+                r = new Random();
+                red = r.nextInt(256);
+                green = r.nextInt(256);
+                blue = r.nextInt(256);
+                color = Color.rgb(red, green, blue);
+            }
+            colorArray[i] = color;
+        }
+        Colour1 = findViewById(R.id.Colour1);
+        Colour2 = findViewById(R.id.Colour2);
+        Colour3 = findViewById(R.id.Colour3);
+        Colour4 = findViewById(R.id.Colour4);
+        Colour1.setBackgroundColor(colorArray[0]);
+        Colour2.setBackgroundColor(colorArray[1]);
+        Colour3.setBackgroundColor(colorArray[2]);
+        Colour4.setBackgroundColor(colorArray[3]);
     }
 
     private void oneButton() {

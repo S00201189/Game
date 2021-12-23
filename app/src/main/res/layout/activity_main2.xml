@@ -21,41 +21,36 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.13999999">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/Colour1"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="110dp"
+            app:cornerRadius="50dp"
             android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/circular_buttons"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/Colour2"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="110dp"
+            app:cornerRadius="50dp"
             android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/circular_buttons"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/Colour3"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="110dp"
+            app:cornerRadius="50dp"
             android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/circular_buttons"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/Colour4"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="110dp"
-            android:background="@drawable/circular_buttons"
+            app:cornerRadius="50dp"
             android:layout_margin="15dp"
-            android:layout_weight="1"
-
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
